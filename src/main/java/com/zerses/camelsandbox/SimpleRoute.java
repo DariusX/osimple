@@ -8,7 +8,7 @@ public class SimpleRoute extends RouteBuilder {
 
     @Override
     public void configure() throws Exception {
-        from("timer://myTimer?period=5000")
+        from("timer://myTimer?period=12000")
             .setBody()
             .simple("Route was fired at ${header.firedTime}")
             .log("${body}");

@@ -13,12 +13,7 @@
   <context:component-scan base-package="com.zerses"/>
   
   <camelContext xmlns="http://camel.apache.org/schema/spring">   
-    <contextScan/>
-    <route>
-      <from uri="timer://myTimer2?period=5000"/>
-      <to uri="direct:test007"/>
-    </route>
-    
+    <contextScan/>    
   </camelContext>
  
 </beans>
