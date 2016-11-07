@@ -26,7 +26,7 @@ E.g.   set EXT_ACTIVEMQ_SERVICE_PORT=tcp://131.141.156.177:61616"
 
 ## Running on Open Shift 3
 
-These steps can be performed using your browser, pointing at your openShift web-console, or using the OpenShift CLI (oc command)
+These steps can be performed using your browser, pointing at your openShift web-console, or using the OpenShift CLI (oc command).
 Login to OpenShift (oc login)
 Create a new Project (oc new-project myproject)
 Add a Wildfly app. This template comes with the default OpenShift installation.So, the simplest way would be to use the web-console to add it
