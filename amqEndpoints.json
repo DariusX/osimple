@@ -6,26 +6,6 @@
 	},
 	"items": [
 		{
-			"kind": "Service",
-			"apiVersion": "v1",
-			"metadata": {
-				"name": "ext-activemq-service"
-			},
-			"spec": {
-				"ports": [
-					{
-						"name": "activemq-port",
-						"port": 61616,
-						"protocol": "TCP",
-						"targetPort": 61616
-					}
-				],
-				"selector": {
-					
-				}
-			}
-		},
-		{
 			"kind": "Endpoints",
 			"apiVersion": "v1",
 			"metadata": {
@@ -35,7 +15,7 @@
 				{
 					"addresses": [
 						{
-							"ip": "159.203.128.56"
+							"ip": "104.131.96.100"
 						}
 					],
 					"ports": [

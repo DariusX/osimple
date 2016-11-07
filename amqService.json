@@ -1,0 +1,29 @@
+{
+	"kind": "List",
+	"apiVersion": "v1",
+	"metadata": {
+		
+	},
+	"items": [
+		{
+			"kind": "Service",
+			"apiVersion": "v1",
+			"metadata": {
+				"name": "ext-activemq-service"
+			},
+			"spec": {
+				"ports": [
+					{
+						"name": "activemq-port",
+						"port": 61616,
+						"protocol": "TCP",
+						"targetPort": 61616
+					}
+				],
+				"selector": {
+					
+				}
+			}
+		}
+	]
+}
