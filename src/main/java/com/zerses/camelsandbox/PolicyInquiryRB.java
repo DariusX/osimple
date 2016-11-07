@@ -32,7 +32,7 @@ public class PolicyInquiryRB extends RouteBuilder {
         .to("log:From_REST_find?showAll=true")
         .choice()
         .when(header("policyId").isEqualTo("111"))
-        .transform(constant("Policy # 111: Workers Comp - Acme Widgets"))
+        .transform(constant("Policy # ${header.policyId}: Workers Comp - Acme Widgets"))
         .otherwise()
         .transform(simple("Policy # ${header.policyId}: Workers Comp - Should not see this message!!!"))
         .inOut("direct:abc")
@@ -43,7 +43,7 @@ public class PolicyInquiryRB extends RouteBuilder {
     
     from("direct:abc")
     .transform(simple("Policy # ${header.policyId}: Sending Data to Message Broker"))
-   // .inOut("activemq::Policy.Inquiry.In?")
+    .inOut("activemq:queue:TEST.FOO")
     .transform(simple("Policy # ${header.policyId}: Workers Comp - After return from Message Broker"))
     ;
     
