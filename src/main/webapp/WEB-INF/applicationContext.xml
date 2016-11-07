@@ -15,10 +15,5 @@
   <camelContext xmlns="http://camel.apache.org/schema/spring">   
     <contextScan/>    
   </camelContext>
-  
-   <bean id="activemq" 
-      class="org.apache.activemq.camel.component.ActiveMQComponent">
-      <property name="brokerURL" value="#{systemProperties['EXT_ACTIVEMQ_SERVICE_PORT']}"/>
-   </bean>  
- 
+
 </beans>
