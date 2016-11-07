@@ -66,6 +66,11 @@
 			<type>jar</type>
 		</dependency>
 
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-camel</artifactId>
+			<version>5.14.1</version>
+		</dependency>
 
 		<!-- logging -->
 		<dependency>
