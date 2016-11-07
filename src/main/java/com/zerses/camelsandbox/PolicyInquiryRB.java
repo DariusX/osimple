@@ -15,12 +15,15 @@ public class PolicyInquiryRB extends RouteBuilder {
         System.out.println("\n\n=====================================================================  Environment : Start ================ ");
                           
         Map<String, String> env = System.getenv();
+        String extActiveMqServicePort = env.get("EXT_ACTIVEMQ_SERVICE_PORT");
+        
         for (String envName : env.keySet()) {
             System.out.format("%s=%s%n",
                               envName,
                               env.get(envName));
         }
-        System.out.println("=====================================================================  Environment : End ================ \n\n");
+        
+        System.out.println("==============="+extActiveMqServicePort+"======================================================  Environment : End ================ \n\n");
         
         
         restConfiguration()

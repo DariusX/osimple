@@ -18,7 +18,7 @@
   
    <bean id="activemq" 
       class="org.apache.activemq.camel.component.ActiveMQComponent">
-      <property name="brokerURL" value="tcp://159.203.128.56:61616"/>
+      <property name="brokerURL" value="#{systemProperties['EXT_ACTIVEMQ_SERVICE_PORT']}"/>
    </bean>  
  
 </beans>
