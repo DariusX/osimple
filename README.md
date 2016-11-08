@@ -26,6 +26,8 @@ E.g.   set EXT_ACTIVEMQ_SERVICE_PORT=tcp://131.141.156.177:61616"
 
 ## Running on Open Shift 3
 
+### Create your Project an d add the main app
+
 These steps can be performed using your browser, pointing at your openShift web-console, or using the OpenShift CLI (oc command).
 
 Login to OpenShift (oc login)
@@ -33,8 +35,13 @@ Login to OpenShift (oc login)
 Create a new Project (oc new-project myproject)
 
 Add a Wildfly app. This template comes with the default OpenShift installation.So, the simplest way would be to use the web-console to add it
-	* Point to the osimple Github repository, or to your own forked/cloned version
+
+* Click on one of the wildfly templates (choose the latest)
+* On the pop-up screen provide a name for the app
+* And, point to the [osimple Github repository](https://github.com/DariusX/osimple.git), or to your own forked/cloned version
 	
+###Add ActiveMQ service and endpoint
+
 Add an OpenShift service that wraps your external ActiveMQ broker. The selectors are left blank because we don;t want the deployment to be inside the OpenShift cluster
 	* The file amqService.json has the definition. No changes are needed for your environment, since the service is only a "logical" starting point
 	* Use the CLI and make sure you are logged in (oc login) and that the correct project is active (oc get project)
