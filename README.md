@@ -45,7 +45,7 @@ Add a Wildfly app. This template comes with the default OpenShift installation.S
 Add an OpenShift service that wraps your external ActiveMQ broker. The selectors are left blank because we don't want the deployment to be inside the OpenShift cluster
 	
 * The file amqService.json has the definition. No changes are needed for your environment, since the service is only a "logical" starting point
-* Use the CLI and make sure you are logged in (oc login) and that the correct project is active (oc get project)
+* Use the CLI and make sure you are logged in (oc login) and that the correct project is active (oc project <project-name>)
 * Use the CLI to create the endpoint from the file (oc create -f amqService.json)
 	
 Add an EndPoint for the above ActiveMQ service. This is where you point to the IP of your ActiveMQ broker
@@ -54,7 +54,8 @@ Add an EndPoint for the above ActiveMQ service. This is where you point to the I
  	(The reason this is plural is that -- in general -- a service can load-balance across multiple end-points.)
 * Once the change has been made, use the CLI to create the endpoint from the file (oc create -f amqEndpoints.json)
  	
-In the web console, you should see another app show up in your project. If you click on it, you should see that it is a service
+In the web console, you should see another app show up in your project. It should say "no deployments", because it is not deployed inside the OpenShift cluster. 
+If you click on it, you should see that it is a service
 
 * It should have been assigned an internal IP, and the port should be 61616 (assuming you have kept the ActiveMQ default)
 * You can also use the CLI (oc get services) (oc get endpoints) to list what you have just created
