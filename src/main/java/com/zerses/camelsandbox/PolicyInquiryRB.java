@@ -1,7 +1,17 @@
 package com.zerses.camelsandbox;
 
 import java.util.Map;
+import java.util.Set;
 
+
+import javax.lang.model.SourceVersion;
+import javax.lang.model.element.AnnotationMirror;
+import javax.lang.model.element.Element;
+import javax.lang.model.element.ExecutableElement;
+import javax.lang.model.element.TypeElement;
+
+import org.apache.camel.Exchange;
+import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.model.rest.RestBindingMode;
 import org.springframework.stereotype.Component;
@@ -47,15 +57,31 @@ public class PolicyInquiryRB extends RouteBuilder {
             .choice()
             .when(header("policyId").isEqualTo("111"))
             .transform(simple("Policy # ${header.policyId}: Workers Comp - Acme Widgets"))
+            .when(header("policyId").isEqualTo("222"))
+            .transform(simple("Policy # ${header.policyId}: Workers Comp - Should not see this message!!!"))
+            .inOut("direct:fileRoute")
             .otherwise()
             .transform(simple("Policy # ${header.policyId}: Workers Comp - Should not see this message!!!"))
-            .inOut("direct:abc")
+            .inOut("direct:msgRoute")
             .end();
 
-        from("direct:abc")
+        from("direct:msgRoute")
             .transform(simple("Policy # ${header.policyId}: Sending Data to Message Broker"))
             .inOut("activemq:queue:TEST.FOO")
             .transform(simple("Policy # ${header.policyId}: Workers Comp - After return from Message Broker"));
+        
+
+        from("direct:fileRoute")
+        .process(new Processor() {
+            
+            @Override
+            public void process(Exchange exchange) throws Exception {
+               String fileLine = NetFileReader.readFile("/data/testfile.txt");
+               System.out.println(fileLine);
+               exchange.getIn().setBody(fileLine);
+                
+            }
+        });
 
     }
 
