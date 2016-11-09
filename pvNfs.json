@@ -1,0 +1,27 @@
+{
+	"kind": "List",
+	"apiVersion": "v1",
+	"metadata": {
+		
+	},
+	"items": [
+		{
+			"kind": "PersistentVolume",
+			"apiVersion": "v1",
+			"metadata": {
+				"name": "pv0001"
+			},
+			"spec": {
+				"capacity": {
+					"storage": "5Gi"
+				},
+				"accessModes": ["ReadWriteOnce"],
+				"nfs": {
+					"server": "138.197.16.155",
+					"path": "/var/nfs/general"
+				},
+				"persistentVolumeReclaimPolicy": "Retain"
+			}
+		}
+	]
+}

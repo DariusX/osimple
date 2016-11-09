@@ -1,0 +1,27 @@
+{
+	"kind": "List",
+	"apiVersion": "v1",
+	"metadata": {
+		
+	},
+	"items": [
+		{
+			"kind": "PersistentVolumeClaim",
+			"apiVersion": "v1",
+			"metadata": {
+				"name": "claim1"
+			},
+			"spec": {
+				"resources": {
+					"requests": {
+						"storage": "5Gi"
+					}
+				},
+				"accessModes": [
+					"ReadWriteOnce"
+				],
+				"volumeName": "pv0001"
+			}
+		}
+	]
+}
