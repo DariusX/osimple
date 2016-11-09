@@ -16,6 +16,7 @@ public class AASimpleTest {
             @Override
             public void configure() throws Exception {
                 from("timer://myTimerX?period=5000")
+                .id("myTimerXRoute")
                 .setBody()
                 .simple("Route was fired at ${header.firedTime}")
                 .log("${body}");
