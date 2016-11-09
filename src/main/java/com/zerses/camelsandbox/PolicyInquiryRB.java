@@ -1,14 +1,6 @@
 package com.zerses.camelsandbox;
 
 import java.util.Map;
-import java.util.Set;
-
-
-import javax.lang.model.SourceVersion;
-import javax.lang.model.element.AnnotationMirror;
-import javax.lang.model.element.Element;
-import javax.lang.model.element.ExecutableElement;
-import javax.lang.model.element.TypeElement;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.LoggingLevel;
@@ -17,9 +9,6 @@ import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.model.rest.RestBindingMode;
 import org.apache.camel.model.rest.RestParamType;
 import org.springframework.stereotype.Component;
-
-import com.zerses.canonical.PersonFindRequest;
-import com.zerses.canonical.PersonFindResponse;
 
 @Component
 public class PolicyInquiryRB extends RouteBuilder {
