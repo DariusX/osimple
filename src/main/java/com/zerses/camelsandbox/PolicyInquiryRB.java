@@ -85,10 +85,7 @@ public class PolicyInquiryRB extends RouteBuilder {
         });
 
         
-        from("direct:msgRoute")
-        .transform(simple("Policy # ${header.policyId}: Sending Data to Message Broker"))
-        .inOut("activemq:queue:TEST.FOO")
-        .transform(simple("Policy # ${header.policyId}: Workers Comp - After return from Message Broker"));
+
     
         String inDir = "/data";
         from("file://" + inDir + "?move=../arch/${date:now:yyyyMMddhhmmss}.${file:name}")
