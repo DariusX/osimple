@@ -11,6 +11,7 @@ import javax.lang.model.element.ExecutableElement;
 import javax.lang.model.element.TypeElement;
 
 import org.apache.camel.Exchange;
+import org.apache.camel.LoggingLevel;
 import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.model.rest.RestBindingMode;
@@ -83,6 +84,18 @@ public class PolicyInquiryRB extends RouteBuilder {
             }
         });
 
+        
+        from("direct:msgRoute")
+        .transform(simple("Policy # ${header.policyId}: Sending Data to Message Broker"))
+        .inOut("activemq:queue:TEST.FOO")
+        .transform(simple("Policy # ${header.policyId}: Workers Comp - After return from Message Broker"));
+    
+        String inDir = "/data";
+        from("file://" + inDir + "?move=../arch/${date:now:yyyyMMddhhmmss}.${file:name}")
+         .id("fileTestRoute")
+         .log(LoggingLevel.INFO, "Reading file: ${file:name}")
+         ;
+                        
     }
 
 }

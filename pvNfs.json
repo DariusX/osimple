@@ -17,7 +17,7 @@
 				},
 				"accessModes": ["ReadWriteOnce"],
 				"nfs": {
-					"server": "138.197.16.155",
+					"server": "104.236.69.3",
 					"path": "/var/nfs/general"
 				},
 				"persistentVolumeReclaimPolicy": "Retain"
