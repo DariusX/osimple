@@ -89,7 +89,7 @@ public class PolicyInquiryRB extends RouteBuilder {
     
         String inDir = "/data";
      //   from("file://" + inDir + "?move=../arch/${date:now:yyyyMMddhhmmss}.${file:name}")
-        from("file://" + inDir )
+        from("file://" + inDir +"?noop=true")
          .id("fileTestRoute")
          .log(LoggingLevel.INFO, "Reading file: ${file:name}")
          ;
