@@ -15,7 +15,11 @@ import org.apache.camel.LoggingLevel;
 import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.model.rest.RestBindingMode;
+import org.apache.camel.model.rest.RestParamType;
 import org.springframework.stereotype.Component;
+
+import com.zerses.canonical.PersonFindRequest;
+import com.zerses.canonical.PersonFindResponse;
 
 @Component
 public class PolicyInquiryRB extends RouteBuilder {
@@ -53,6 +57,9 @@ public class PolicyInquiryRB extends RouteBuilder {
 
         rest()
             .get("/policy/{policyId}")
+            .description("Find a specific Policy")
+            .param().name("policyId").type(RestParamType.path).description("Policy ID").endParam()
+            .outType(String.class)
             .route()
             .to("log:From_REST_find?showAll=true")
             .choice()
@@ -65,6 +72,7 @@ public class PolicyInquiryRB extends RouteBuilder {
             .transform(simple("Policy # ${header.policyId}: Workers Comp - Should not see this message!!!"))
             .inOut("direct:msgRoute")
             .end();
+
 
         from("direct:msgRoute")
             .transform(simple("Policy # ${header.policyId}: Sending Data to Message Broker"))
