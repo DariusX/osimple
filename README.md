@@ -20,6 +20,12 @@ You need some software running on an external host (could be the same as the Act
 
 You need access to OpenShift v3 to run this project. On Windows, the easiest way is  to use the All-In-One virtual Machine https://www.openshift.org/vm/
 
+The following steps are specific to my environment, which is an Ubuntu box with Docker running as a service, and the path already set to the OpenShift client
+* oc cluster up (Should start up: check that there are not errors or warnings among the many messages)
+* oc login -u system:admin
+* oc adm policy add-cluster-role-to-user cluster-admin admin (adds a cluster-wide admin role to the user named 'admin')
+
+
 ## Running locally
 You should be able to run this locally in something like Tomcat if you export an environment variable pointing to your ActiveMQ broker.
 E.g.   set EXT_ACTIVEMQ_SERVICE_PORT=tcp://131.141.156.177:61616"
