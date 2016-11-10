@@ -4,6 +4,6 @@ metadata:
   name: ext-activemq-service
 subsets: 
   - addresses:
-      - ip: 104.236.69.3
+      - ip: 159.203.161.231
     ports:
       - port: 61616      
