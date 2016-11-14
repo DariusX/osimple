@@ -53,7 +53,7 @@ public class PolicyInquiryRB extends RouteBuilder {
             .to("log:From_REST_find?showAll=true")
             .choice()
               .when(header("policyId").isEqualTo("111"))
-              .transform(simple("Policy # ${header.policyId}: Workers Comp - Acme Widgets"))
+              .transform(simple("Policy # ${header.policyId}: Workers Comp - Acme Widgets SPRINT-1"))
               
             .when(header("policyId").isEqualTo("222"))
               .transform(simple("Policy # ${header.policyId}: Workers Comp - Should not see this message!!!"))
