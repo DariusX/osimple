@@ -11,7 +11,7 @@ public class SimpleRoute extends RouteBuilder {
         from("timer://myTimer?period=12000")
             .id("myTimerRoute")
             .setBody()
-            .simple("Route was fired at ${header.firedTime}")
+            .simple("SimpleRoute was fired at ${header.firedTime}")
             .log("${body}");
 
     }
